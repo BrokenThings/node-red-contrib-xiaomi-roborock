@@ -30,7 +30,7 @@
   },
   "node-red": {
     "nodes": {
-      "roborock": "roborock.js"
+      "roborock": "roborock.js",
       "roborock-config": "roborock-config.js"
     }
   }
