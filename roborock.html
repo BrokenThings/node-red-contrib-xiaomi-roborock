@@ -1,0 +1,57 @@
+<!--
+  Copyright 2013, 2016 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('roborock',{
+        category: 'Xiaomi Roborock',
+        color: '#a6bbcf',
+        defaults: {
+            connection: {value:"", type:"roborock-config"},
+            name: {value:"MyRoborock", required:true},
+            command: {value:"", required:false},
+            args: {value:"", required:false},
+            jobid: {value:"", required:false},
+        },
+        inputs: 1,
+        outputs: 1,
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="roborock">
+    <div class="form-row">
+        <label for="node-input-connection"><i class="icon-bookmark"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-command"><i class="icon-bookmark"></i> Command</label>
+        <input type="text" id="node-input-command">
+    </div>
+    <div class="form-row">
+        <label for="node-input-args"><i class="icon-bookmark"></i> Args</label>
+        <input type="text" id="node-input-args">
+    </div>
+    <div class="form-row">
+        <label for="node-input-jobid"><i class="icon-bookmark"></i> JobID</label>
+        <input type="text" id="node-input-jobid">
+    </div>
+</script>
