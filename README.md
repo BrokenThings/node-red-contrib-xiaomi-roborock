@@ -35,6 +35,11 @@ Args are passed through.
 
 ## Known Issues
 
+### Array cannot be passed via node properties ui editor
+
+If a command needs an array or object to be passed as argument, this cannot be done via the node properties ui editor.
+A JSON payload needs to be send to the node instead in order to work (see example for zoned cleanup above).
+
 ### Updating firmware requires restart of NodeRED
 
 After a firmware update the following error occur: "Could not connect to device, token might be wrong".
