@@ -32,3 +32,11 @@ Args are passed through.
 ## Implemented Nodes
 
  * miIO Node
+
+## Known Issues
+
+### Updating firmware requires restart of NodeRED
+
+After a firmware update the following error occur: "Could not connect to device, token might be wrong".
+Restarting NodeRED usually solves this issue.
+Thanks to @readeral
