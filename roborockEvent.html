@@ -15,18 +15,31 @@
 -->
 
 <script type="text/javascript">
-    RED.nodes.registerType('roborock',{
+    RED.nodes.registerType('roborockEvent', {
         category: 'Xiaomi Roborock',
         color: '#a6bbcf',
         defaults: {
-            connection: {value:"", type:"roborock-config"},
-            name: {value:"", required:false},
-            command: {value:"", required:false},
-            args: {value:"", required:false},
-            jobid: {value:"", required:false},
+            connection: {
+                value: "",
+                type: "roborock-config"
+            },
+            name: {
+                value: "",
+                required: false
+            },
+            pooling: {
+                value: 20,
+                required: true,
+                validate: function(value) {
+                    return value > 5;
+                }
+            },
+            events: {
+                value: false,
+                required: false
+            }
         },
         icon: 'bridge.png',
-        inputs: 1,
         outputs: 1,
         label: function() {
             return this.name || 'Roborock';
@@ -35,7 +48,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="roborock">
+<script type="text/x-red" data-template-name="roborockEvent">
     <div class="form-row">
         <label for="node-input-connection"><i class="icon-bookmark"></i> Connection</label>
         <input type="text" id="node-input-connection">
@@ -45,15 +58,11 @@
         <input type="text" id="node-input-name">
     </div>
     <div class="form-row">
-        <label for="node-input-command"><i class="icon-bookmark"></i> Command</label>
-        <input type="text" id="node-input-command">
+        <label for="node-input-events"><i class="icon-bookmark"></i> Get events</label>
+        <input type="checkbox" id="node-input-events">
     </div>
     <div class="form-row">
-        <label for="node-input-args"><i class="icon-bookmark"></i> Args</label>
-        <input type="text" id="node-input-args">
-    </div>
-    <div class="form-row">
-        <label for="node-input-jobid"><i class="icon-bookmark"></i> JobID</label>
-        <input type="text" id="node-input-jobid">
+        <label for="node-input-pooling"><i class="icon-bookmark"></i> Polling interval (s)</label>
+        <input type="text" id="node-input-pooling">
     </div>
 </script>
