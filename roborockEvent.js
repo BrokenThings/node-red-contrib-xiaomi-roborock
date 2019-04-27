@@ -16,7 +16,6 @@
 
 "use strict";
 const miio = require('miio');
-const util = require('util');
 
 module.exports = function(RED) {
 
@@ -35,22 +34,19 @@ module.exports = function(RED) {
             .then(device => {
                 node.device = device;
 
-                //console.log(JSON.stringify(device, null, 4));
+                node.device.updatePollDuration(node.config.pooling * 1000);
 
-                device.on('stateChanged', change => {
+                node.device.on('stateChanged', change => {
                     getState();
                 });
 
-                getState();
-                node.interval = setInterval(() => getState(), node.config.pooling * 1000);
-
-
                 if (node.config.events) {
-                    device.onAny(event => {
+                    node.device.onAny(event => {
                         node.send({
                             payload: {
                                 event: event
-                            }
+                            },
+                            event: event
                         });
                     });
                 }
@@ -63,13 +59,16 @@ module.exports = function(RED) {
         function getState() {
             node.device.state()
                 .then(state => {
+                    node.log('getState');
                     var jsonState = JSON.stringify(state);
                     if (jsonState != node.lastState) {
                         node.lastState = JSON.stringify(state);
+                        node.log(JSON.stringify(state));
                         node.send({
                             payload: {
                                 state: state
-                            }
+                            },
+                            state: state
                         });
                     }
                 });
