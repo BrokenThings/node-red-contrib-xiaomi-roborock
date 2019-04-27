@@ -58,11 +58,6 @@ module.exports = function(RED) {
             })
             .catch(err => {
                 node.warn('Encountered an error while connecting to device: ' + err.message);
-            })
-            .finally(() => {
-                if (node.device) {
-                    node.device.destroy();
-                }
             });
 
         function getState() {
