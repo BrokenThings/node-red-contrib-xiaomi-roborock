@@ -59,11 +59,9 @@ module.exports = function(RED) {
         function getState() {
             node.device.state()
                 .then(state => {
-                    node.log('getState');
                     var jsonState = JSON.stringify(state);
-                    if (jsonState != node.lastState) {
+                    if (jsonState !== node.lastState) {
                         node.lastState = JSON.stringify(state);
-                        node.log(JSON.stringify(state));
                         node.send({
                             payload: {
                                 state: state
