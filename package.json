@@ -32,6 +32,7 @@
   "node-red": {
     "nodes": {
       "roborock": "roborock.js",
+      "roborockEvent": "roborockEvent.js",
       "roborock-config": "roborock-config.js"
     }
   }
